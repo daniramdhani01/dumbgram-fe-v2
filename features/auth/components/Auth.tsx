@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import ModalAuth from "./ModalAuth";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Auth() {
   return (
@@ -19,8 +21,15 @@ export default function Auth() {
               people and enjoy other creations.
             </span>
           </div>
-          <div className="flex">
-            <ModalAuth/>
+          <div className="flex gap-4">
+            <Suspense fallback={
+              <>
+                <Skeleton className="w-36 h-10" />
+                <Skeleton className="w-36 h-10" />
+              </>
+            }>
+              <ModalAuth/>
+            </Suspense>
           </div>
         </section>
 
