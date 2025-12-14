@@ -7,9 +7,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex">
+    <div className="flex justify-center">
       <ProfileBar/>
-      <main className="w-full p-4 md:pl-24 xl:pl-84">
+      <main className="w-full max-w-7xl p-4 md:ml-24 xl:ml-84">
         <TopBar/>
         {children}
       </main>
