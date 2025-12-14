@@ -1,5 +1,1 @@
-import AuthWrapper from "./AuthWrapper"
-
-export const AuthPage = () => {
-    return <AuthWrapper/>
-}
+export { default } from './Auth'

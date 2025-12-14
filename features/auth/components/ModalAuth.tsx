@@ -24,7 +24,7 @@ export default function ModalAuth() {
     return (
         <>
             <Dialog
-                open={!!mode}
+                open={!!modalTitle}
                 onOpenChange={(value) => {
                     if (!value) setMode(null)
                 }}

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import ModalAuth from "./ModalAuth";
 
-export default function AuthWrapper() {
+export default function Auth() {
   return (
-    <main className="flex justify-center">
-      <div className="flex flex-wrap p-10 md:max-w-7xl">
+    <div className="flex justify-center">
+      <main className="p-10 md:flex md:max-w-7xl">
         <section className="md:w-2/5 md:pr-8">
           <Image
             src="/logo.svg"
@@ -14,7 +14,7 @@ export default function AuthWrapper() {
           />
           <div className="mt-16 mb-8">
             <h1 className="block font-bold text-5xl leading-16">Share your best photos or videos</h1>
-            <span className="block text-primary/35 mt-4">
+            <span className="block text-primary/60 mt-4">
               Join now, share your creations with another<br/>
               people and enjoy other creations.
             </span>
@@ -32,7 +32,7 @@ export default function AuthWrapper() {
             height={628}
           />
         </section>
-      </div>
-    </main>
+      </main>
+    </div>
   )
 }
