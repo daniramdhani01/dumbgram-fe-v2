@@ -1,13 +1,11 @@
-'use client'
-
 import { cn } from "@/lib/utils";
 import { Skeleton } from "../ui/skeleton";
 import PostCard from "./PostCard"
-import { useIsMobile } from "@/hooks/use-mobile";
 
 type PostGridProps = {
     title: string;
     list: string[];
+    isMobile: boolean;
 }
 
 const isLoading = false
@@ -51,23 +49,8 @@ function Post({ item }: { item: string }) {
   );
 }
 
-export default function PostGrid({list, title}: PostGridProps) {
-  const isMobile = useIsMobile();
+export default function PostGrid({list, title, isMobile}: PostGridProps) {
   const columns = distributeToColumns(list, 3);
-
-  // Show loading skeleton while detecting screen size
-  if (isMobile === undefined) {
-    return (
-      <div className="mt-8">
-        <h1 className="hidden md:flex text-4xl mb-4">{title}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-          {list.slice(0, 6).map((item, idx) => (
-            <SkeletonCard key={item} index={idx} />
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="mt-8">

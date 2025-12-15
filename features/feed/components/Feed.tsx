@@ -1,4 +1,6 @@
 import PostGrid from "@/components/shared/PostGrid"
+import { getIsMobile } from "@/lib/get-device"
+
 const url = "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/"
 const list = [
   "image.jpg",
@@ -19,11 +21,12 @@ function getListImage(list: string[], url: string) {
   return list.map(item => url + item)
 }
 
-export default function Feed() {
+export default async function Feed() {
+  const isMobile = await getIsMobile();
   const postList = getListImage(list, url)
   return (
     <>
-      <PostGrid title={"Feed"} list={postList}/>
+      <PostGrid title={"Feed"} list={postList} isMobile={isMobile}/>
     </>
   )
 }
