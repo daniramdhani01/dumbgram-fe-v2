@@ -2,6 +2,7 @@ import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/in
 import { Bell, Search, Send, SquarePlus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import LogoNavigation from '@/components/shared/LogoNavigation'
+import Link from 'next/link'
 
 export default function TopBar() {
   return (
@@ -20,9 +21,11 @@ export default function TopBar() {
             <Button variant="outline" size="icon">
                 <Send />
             </Button>
-            <Button variant="rainbow" className='hidden md:flex'>
-                <SquarePlus /> Create Post
-            </Button>
+            <Link href="/create-post">
+                <Button variant="rainbow" className='hidden md:flex'>
+                    <SquarePlus /> Create Post
+                </Button>
+            </Link>
         </div>
     </div>
   )
