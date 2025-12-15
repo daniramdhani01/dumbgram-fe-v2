@@ -6,14 +6,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useImagePreview } from '@/hooks/useImagePreview';
 
-const createPostSchema = z.object({
+const editProfileSchema = z.object({
   image: z.instanceof(File, { message: 'Photo is required' }),
-  caption: z.string().optional(),
+  name: z.string().min(1, 'Name is required'),
+  username: z.string().min(1, 'Username is required'),
+  bio: z.string().optional(),
 });
 
-export type CreatePostFormData = z.infer<typeof createPostSchema>;
+export type EditProfileFormData = z.infer<typeof editProfileSchema>;
 
-export function useCreatePostForm() {
+export function useEditProfileForm() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { previewUrl, error: imageError, selectedFile, handleFileSelect, handleRemove } = useImagePreview();
 
@@ -23,11 +25,10 @@ export function useCreatePostForm() {
     setValue,
     clearErrors,
     formState: { errors },
-  } = useForm<CreatePostFormData>({
-    resolver: zodResolver(createPostSchema),
+  } = useForm<EditProfileFormData>({
+    resolver: zodResolver(editProfileSchema),
   });
 
-  // Sync selectedFile dengan form
   useEffect(() => {
     if (selectedFile) {
       setValue('image', selectedFile);
@@ -44,7 +45,7 @@ export function useCreatePostForm() {
     setValue('image', undefined as unknown as File);
   }, [handleRemove, setValue]);
 
-  const onSubmit = useCallback((data: CreatePostFormData) => {
+  const onSubmit = useCallback((data: EditProfileFormData) => {
     console.log('Form submitted:', data);
     // TODO: Handle form submission
   }, []);
@@ -53,7 +54,11 @@ export function useCreatePostForm() {
     fileInputRef,
     previewUrl,
     imageError,
-    formError: errors.image?.message,
+    errors: {
+      image: errors.image?.message,
+      name: errors.name?.message,
+      username: errors.username?.message,
+    },
     register,
     handleSubmit: handleSubmit(onSubmit),
     handleUploadClick,

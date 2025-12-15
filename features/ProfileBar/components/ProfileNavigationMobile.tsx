@@ -31,17 +31,17 @@ export default function ProfileNavigationMobile() {
       </Link>
 
       <Link
-          href="/create"
+          href="/create-post"
           className="flex flex-col items-center justify-center gap-1 p-3 rounded-lg transition-colors text-primary/60 hover:text-primary/80"
       >
           <SquarePen size={26} strokeWidth={2} />
       </Link>
 
       <Link
-          href="/profile"
+          href="/edit-profile"
           className={cn(
             "flex flex-col items-center justify-center gap-1 p-3 rounded-lg transition-colors",
-            pathname?.startsWith("/profile") ? "text-primary" : "text-primary/60 hover:text-primary/80"
+            pathname?.startsWith("/edit-profile") ? "text-primary" : "text-primary/60 hover:text-primary/80"
           )}
       >
           <div className={cn(

@@ -6,6 +6,7 @@ import ProfileStats from './ProfileStats'
 import ProfileNavigationMobile from './ProfileNavigationMobile'
 import ProfileNavigationWideScreen from './ProfileNavigationWideScreen'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 export default function ProfileBar() {
   return (
@@ -54,9 +55,11 @@ export default function ProfileBar() {
 
           {/* Edit Profile */}
           <div className='hidden xl:flex justify-end'>
+            <Link href="/edit-profile">
               <Button variant="outline" size="icon">
                   <SquarePen />
               </Button>
+            </Link>
           </div>
 
           {/* Profile Photo */}

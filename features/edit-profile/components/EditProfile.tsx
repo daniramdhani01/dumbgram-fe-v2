@@ -1,31 +1,32 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useCreatePostForm } from '../hooks';
+import { Alert, AlertTitle } from '@/components/ui/alert';
+import { AlertCircleIcon } from 'lucide-react';
 import ImagePreview from '@/components/shared/ImagePreview';
 import { ALLOWED_MIME_TYPES } from '@/lib/image-validation';
-import { AlertCircleIcon } from 'lucide-react';
-import { Alert, AlertTitle } from '@/components/ui/alert';
+import { useEditProfileForm } from '../hooks';
 
-export default function CreatePost() {
+function EditProfile() {
   const {
     fileInputRef,
     previewUrl,
     imageError,
-    formError,
+    errors,
     register,
     handleSubmit,
     handleUploadClick,
     handleFileSelect,
     handleRemoveImage,
-  } = useCreatePostForm();
+  } = useEditProfileForm();
 
-  const errorMessage = imageError || formError;
+  const errorMessage = imageError || errors.image;
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
-      <h1 className="text-4xl mb-4">Create Post</h1>
+      <h1 className="text-4xl mb-4">Edit Profile</h1>
 
       <input
         ref={fileInputRef}
@@ -33,7 +34,7 @@ export default function CreatePost() {
         accept={ALLOWED_MIME_TYPES.join(',')}
         onChange={handleFileSelect}
         className="hidden"
-        aria-label="Select image file"
+        aria-label="Select profile photo"
       />
 
       <Button type="button" variant="rainbow" className="md:w-40" onClick={handleUploadClick}>
@@ -49,11 +50,23 @@ export default function CreatePost() {
 
       {previewUrl && <ImagePreview previewUrl={previewUrl} onRemove={handleRemoveImage} />}
 
-      <Textarea placeholder="Caption" className="h-36" {...register('caption')} />
+      <div className="flex flex-col gap-1">
+        <Input placeholder="Name" {...register('name')} />
+        {errors.name && <span className="text-sm text-destructive">{errors.name}</span>}
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <Input placeholder="Username" {...register('username')} />
+        {errors.username && <span className="text-sm text-destructive">{errors.username}</span>}
+      </div>
+
+      <Textarea placeholder="Bio" className="h-36" {...register('bio')} />
 
       <Button type="submit" variant="rainbow" className="md:w-36 md:self-end">
-        Upload
+        Save
       </Button>
     </form>
   );
 }
+
+export default EditProfile;
