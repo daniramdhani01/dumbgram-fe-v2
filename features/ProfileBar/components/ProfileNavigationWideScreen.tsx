@@ -8,7 +8,7 @@ export default function ProfileNavigationWideScreen() {
     const pathname = usePathname()
 
   return (
-    <div className='hidden md:flex xl:border-y md:mt-10 xl:py-4 my-4 flex-col gap-8 xl:gap-4'>
+    <div className='hidden md:flex md:mt-10 xl:py-4 my-4 flex-col gap-8 xl:gap-4'>
       <Link
           href="/"
           className={cn(
@@ -29,6 +29,8 @@ export default function ProfileNavigationWideScreen() {
           <Compass className="inline"/>
           <span className='hidden xl:inline'>Explore</span>
       </Link>
+
+      <hr className='hidden xl:block'/>
 
     <Link href="/auth" className='text-primary/60 flex items-center gap-3'>
       <LogOut className='inline'/>
