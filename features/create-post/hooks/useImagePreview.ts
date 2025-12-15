@@ -24,10 +24,10 @@ export interface UseImagePreviewReturn {
  * Error messages for validation failures
  */
 const ERROR_MESSAGES = {
-  INVALID_EXTENSION: 'Format file tidak didukung. Gunakan JPG, PNG, WebP, BMP, atau SVG.',
-  GIF_NOT_ALLOWED: 'Format GIF tidak didukung.',
-  INVALID_SIZE: 'Ukuran file maksimal 1MB.',
-  INVALID_MAGIC_BYTES: 'File tidak valid atau rusak.',
+  INVALID_EXTENSION: 'File format not supported. Use JPG, PNG, WebP, BMP, or SVG.',
+  GIF_NOT_ALLOWED: 'GIF format is not supported.',
+  INVALID_SIZE: 'Maximum file size is 1MB.',
+  INVALID_MAGIC_BYTES: 'File is invalid or corrupted.',
 } as const;
 
 /**
