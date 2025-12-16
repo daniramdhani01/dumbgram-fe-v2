@@ -3,6 +3,27 @@ import { Bell, Search, Send, SquarePlus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import LogoNavigation from '@/components/shared/LogoNavigation'
 import Link from 'next/link'
+import { NotificationItem, NotificationPopover } from './NotificationPopover'
+
+const notifications: NotificationItem[] = [
+  {
+    id: "1",
+    username: "abdul_h",
+    avatarUrl: "/path/to/avatar.jpg",
+    type: "comment",
+    content: "Nice Place",
+    createdAt: new Date(),
+    isRead: false,
+  },
+  {
+    id: "2", 
+    username: "egi_lol",
+    type: "comment",
+    content: "Good Vibe",
+    createdAt: new Date(),
+    isRead: true,
+  },
+]
 
 export default function TopBar() {
   return (
@@ -14,13 +35,25 @@ export default function TopBar() {
                 <InputGroupAddon><Search /></InputGroupAddon>
             </InputGroup>
         </div>
-        <div className='flex justify-end w-3/5 gap-2'>
-            <Button variant="outline" size="icon">
-                <Bell />
-            </Button>
-            <Button variant="outline" size="icon">
-                <Send />
-            </Button>
+        <div className='flex justify-end w-3/5 gap-1'>
+            <NotificationPopover
+                notifications={notifications}
+                unreadCount={2}
+            />
+            <button
+                className={"relative p-2 rounded-full transition-colors hover:bg-white/10"}
+                aria-label="Notifications"
+            >
+                <Send className="h-6 w-6 text-white"/>
+                
+                {/* Badge untuk unread count */}
+                {false && (
+                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
+                    {/* {unreadCount > 99 ? "99+" : unreadCount} */}
+                    99+
+                </span>
+                )}
+            </button>
             <Link href="/create-post">
                 <Button variant="rainbow" className='hidden md:flex'>
                     <SquarePlus /> Create Post
