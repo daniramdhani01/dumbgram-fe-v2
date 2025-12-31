@@ -21,12 +21,12 @@ function getListImage(list: string[], url: string) {
   return list.map(item => url + item)
 }
 
-export default async function Feed() {
+export default async function Explore() {
   const isMobile = await getIsMobile();
   const postList = getListImage(list, url)
   return (
     <>
-      <PostGrid title={"Feed"} list={postList} isMobile={isMobile}/>
+      <PostGrid title={"Explore"} list={postList} isMobile={isMobile}/>
     </>
   )
 }
