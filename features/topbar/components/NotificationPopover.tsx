@@ -97,7 +97,7 @@ export function NotificationPopover({
       <PopoverTrigger asChild>
         <button
           className={cn(
-            "relative p-2 rounded-full transition-colors hover:bg-white/10",
+            "relative p-2 rounded-full transition-colors hover:bg-white/10 cursor-pointer",
             className
           )}
           aria-label="Notifications"

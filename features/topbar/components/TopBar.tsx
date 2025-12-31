@@ -1,5 +1,5 @@
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
-import { Bell, Search, Send, SquarePlus } from 'lucide-react'
+import { Search, Send, SquarePlus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import LogoNavigation from '@/components/shared/LogoNavigation'
 import Link from 'next/link'
@@ -40,8 +40,9 @@ export default function TopBar() {
                 notifications={notifications}
                 unreadCount={2}
             />
+            <Link href="/message">
             <button
-                className={"relative p-2 rounded-full transition-colors hover:bg-white/10"}
+                className="relative p-2 rounded-full transition-colors hover:bg-white/10 cursor-pointer"
                 aria-label="Notifications"
             >
                 <Send className="h-6 w-6 text-white"/>
@@ -54,6 +55,7 @@ export default function TopBar() {
                 </span>
                 )}
             </button>
+            </Link>
             <Link href="/create-post">
                 <Button variant="rainbow" className='hidden md:flex'>
                     <SquarePlus /> Create Post
